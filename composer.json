@@ -1,0 +1,12 @@
+{
+    "name": "johmanx10/talk-php7-wordpress",
+    "license": "GPL-3.0",
+    "require-dev": {
+        "zero-config/preacher": "^3.0"
+    },
+    "archive": {
+        "exclude": [
+            "**.md"
+        ]
+    }
+}
