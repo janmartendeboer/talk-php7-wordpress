@@ -1,0 +1,34 @@
+{% set baseUrl = '' %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>{{ headline|default(source.baseName) }} - PHP 7 talk</title>
+    <link rel="canonical" href="{{ baseUrl ~ output.path }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ baseUrl ~ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ baseUrl ~ asset('css/bootstrap-theme.min.css') }}">
+    <link rel="stylesheet" href="{{ baseUrl ~ asset('css/main.css') }}">
+</head>
+
+<body class="bg-info">
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            {{ content }}
+        </div>
+    </div>
+
+    <footer class="row">
+        <div class="col-xs-12">
+            <p>
+                Last updated:
+                {{ source.metaData.dateUpdated|date('M d Y H:i') }}
+                - {{ source.metaData.author.name }}
+            </p>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
