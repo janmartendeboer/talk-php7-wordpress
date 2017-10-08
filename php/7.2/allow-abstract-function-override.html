@@ -3,20 +3,57 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>allow-abstract-function-override - PHP 7 talk</title>
+    <title>Allow abstract function override - PHP 7 talk</title>
     <link rel="canonical" href="/home/johmanx/git/talk-php7-wordpress/php/7.2/allow-abstract-function-override.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://zeroconfig.github.io/Preacher/css/prism.css?e4e87ce" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="/home/johmanx/git/talk-php7-wordpress/css/bootstrap-theme.min.css?45defa8">
-    <link rel="stylesheet" href="/home/johmanx/git/talk-php7-wordpress/css/main.css?189d072">
+    <link rel="stylesheet" href="/home/johmanx/git/talk-php7-wordpress/css/main.css?3df93a2">
 </head>
 
 <body>
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                
+                <h1>Allow abstract function override</h1>
+<p>PHP 7 introduced type declarations for return and improved ones for parameters. They currently support a very limited kind of variance (only to no-type):</p>
+<pre><code class="language-php">&lt;?php
+class A           { function bar(stdClass $x){}  }
+class B extends A { function bar($x): stdClass{} }</code></pre>
+<p>However, this isn't currently matched by the equivalent abstract declarations:</p>
+<p>This RFC proposes to allow this, even if it has very few uses, and because there is no reason to disallow a compatible redefinition.</p>
+<p>Additionally, it comes in handy for documentation:</p>
+<pre><code class="language-php">&lt;?php
+interface A{
+    function doSomething();
+}
+
+interface B extends A{
+    function doSomethingElse();
+}
+
+abstract class AProxy implements A{
+    abstract protected function getOrigin(): A;
+    function doSomething(){
+        return $this-&gt;getOrigin()-&gt;doSomething();
+    }
+}
+
+// This phpdoc syntax has quirks in phpdocumentor
+// apigen and phpstorm, and it's almost unmanageable
+// as phpdoc interpreters have poor multiline support
+// (imagine documenting all the parameters, the return
+// type, all the throws...):
+/** @method B getOrigin() */
+abstract class BProxy extends AProxy implements B{
+    /** @return B */ // This is much better!
+    abstract protected function getOrigin(): A;
+    function doSomethingElse(){
+        return $this-&gt;getOrigin()-&gt;doSomethingElse();
+    }
+}</code></pre>
+<p>And, obviously, it will gain more uses when PHP will support a full-featured type variance.</p>
             </div>
         </div>
     </div>

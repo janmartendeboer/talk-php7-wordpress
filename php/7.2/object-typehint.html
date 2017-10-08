@@ -3,20 +3,68 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>object-typehint - PHP 7 talk</title>
+    <title>Object typehint - PHP 7 talk</title>
     <link rel="canonical" href="/home/johmanx/git/talk-php7-wordpress/php/7.2/object-typehint.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://zeroconfig.github.io/Preacher/css/prism.css?e4e87ce" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="/home/johmanx/git/talk-php7-wordpress/css/bootstrap-theme.min.css?45defa8">
-    <link rel="stylesheet" href="/home/johmanx/git/talk-php7-wordpress/css/main.css?189d072">
+    <link rel="stylesheet" href="/home/johmanx/git/talk-php7-wordpress/css/main.css?3df93a2">
 </head>
 
 <body>
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                
+                <h1>Object typehint</h1>
+<p>PHP 7 introduced scalar types for parameters and also for declaring return types for functions.</p>
+<p>However it is not currently possible to declare that a function either needs to be passed an object as a parameter, or to declare that a function must return an object.</p>
+<ul>
+<li>Hydrators</li>
+<li>Data extractors</li>
+<li>Service containers and DIC libraries</li>
+</ul>
+<h2>Parameter type</h2>
+<pre><code class="language-php">&lt;?php
+function acceptsObject(object $obj) {
+    ...
+}
+
+// This code can be statically analyzed to be correct
+acceptsObject(json_decode('{}'));
+
+// This code can be statically analyzed to be correct
+acceptsObject(new \MyObject());
+
+// This can be statically analysed to contain an error.
+// and would throw an TypeError at runtime.
+acceptsObject("Ceci n'est pas une object.");</code></pre>
+<h2>Return type</h2>
+<p>Functions and methods can be declared with an object return type, to enforce that the function must return an object.</p>
+<pre><code class="language-php">&lt;?php
+// This function can be statically analysed to conform to the
+// return type
+function correctFunction() : object {
+    $obj = json_decode('{}');
+
+    return $obj;
+}
+
+// This function can be statically analysed to contain an error
+// and will also fail at runtime.
+function errorFunction() : object {
+    return [];
+}</code></pre>
+<h2>Service container</h2>
+<p>For both service containers and dependency injection libraries, it is common to want to put services and other objects into the container.</p>
+<pre><code class="language-php">&lt;?php
+interface ServiceContainer {
+  // Set service definition
+  public function set(string $id, object $service);
+
+  // Retrieve service object from container
+  public function get(string $id) : object;
+}</code></pre>
             </div>
         </div>
     </div>
