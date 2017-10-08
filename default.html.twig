@@ -13,22 +13,12 @@
 </head>
 
 <body class="bg-info">
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            {{ content }}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                {{ content }}
+            </div>
         </div>
     </div>
-
-    <footer class="row">
-        <div class="col-xs-12">
-            <p>
-                Last updated:
-                {{ source.metaData.dateUpdated|date('M d Y H:i') }}
-                - {{ source.metaData.author.name }}
-            </p>
-        </div>
-    </footer>
-</div>
 </body>
 </html>

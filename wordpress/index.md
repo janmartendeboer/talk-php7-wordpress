@@ -5,8 +5,8 @@ Blatantly copied from the
 
 # Requests per second
 
-![Requests per second](images/wordpress41-requests-per-second.png)
+![Requests per second](wordpress41-requests-per-second.png)
 
 # Latency
 
-![Latency](images/wordpress41-latency.png)
+![Latency](wordpress41-latency.png)
