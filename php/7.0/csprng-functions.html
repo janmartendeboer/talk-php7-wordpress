@@ -3,20 +3,34 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>csprng-functions - PHP 7 talk</title>
+    <title>CSPRNG functions - PHP 7 talk</title>
     <link rel="canonical" href="/home/johmanx/git/talk-php7-wordpress/php/7.0/csprng-functions.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://zeroconfig.github.io/Preacher/css/prism.css?e4e87ce" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="/home/johmanx/git/talk-php7-wordpress/css/bootstrap-theme.min.css?45defa8">
-    <link rel="stylesheet" href="/home/johmanx/git/talk-php7-wordpress/css/main.css?189d072">
+    <link rel="stylesheet" href="/home/johmanx/git/talk-php7-wordpress/css/main.css?3df93a2">
 </head>
 
 <body>
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                
+                <h1>CSPRNG functions</h1>
+<p>Two new functions have been added to generate cryptographically secure integers and strings in a cross platform way: random_bytes() and random_int().</p>
+<h2>Random bytes</h2>
+<pre><code class="language-php">&lt;?php
+$bytes = random_bytes(5);
+var_dump(bin2hex($bytes));</code></pre>
+<p>The above example will output something similar to:</p>
+<pre><code>string(10) "385e33f741"</code></pre>
+<h2>Random int</h2>
+<pre><code class="language-php">&lt;?php
+var_dump(random_int(100, 999));
+var_dump(random_int(-1000, 0));</code></pre>
+<p>The above example will output something similar to:</p>
+<pre><code>int(248)
+int(-898)</code></pre>
             </div>
         </div>
     </div>

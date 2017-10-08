@@ -3,20 +3,39 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>preg-replace-callback-array - PHP 7 talk</title>
+    <title>preg_replace_callback_array() - PHP 7 talk</title>
     <link rel="canonical" href="/home/johmanx/git/talk-php7-wordpress/php/7.0/preg-replace-callback-array.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://zeroconfig.github.io/Preacher/css/prism.css?e4e87ce" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="/home/johmanx/git/talk-php7-wordpress/css/bootstrap-theme.min.css?45defa8">
-    <link rel="stylesheet" href="/home/johmanx/git/talk-php7-wordpress/css/main.css?189d072">
+    <link rel="stylesheet" href="/home/johmanx/git/talk-php7-wordpress/css/main.css?3df93a2">
 </head>
 
 <body>
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                
+                <h1>preg_replace_callback_array()</h1>
+<p>The new preg_replace_callback_array() function enables code to be written more cleanly when using the preg_replace_callback() function. Prior to PHP 7, callbacks that needed to be executed per regular expression required the callback function to be polluted with lots of branching.</p>
+<p>Now, callbacks can be registered to each regular expression using an associative array, where the key is a regular expression and the value is a callback.</p>
+<pre><code class="language-php">&lt;?php
+$subject = 'Aaaaaa Bbb';
+
+preg_replace_callback_array(
+    [
+        '~[a]+~i' =&gt; function ($match) {
+            echo strlen($match[0]), ' matches for "a" found', PHP_EOL;
+        },
+        '~[b]+~i' =&gt; function ($match) {
+            echo strlen($match[0]), ' matches for "b" found', PHP_EOL;
+        }
+    ],
+    $subject
+);</code></pre>
+<p>The above example will output:</p>
+<pre><code>6 matches for "a" found
+3 matches for "b" found</code></pre>
             </div>
         </div>
     </div>

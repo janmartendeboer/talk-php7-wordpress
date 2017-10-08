@@ -3,20 +3,35 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>closure-call - PHP 7 talk</title>
+    <title>Closure::call - PHP 7 talk</title>
     <link rel="canonical" href="/home/johmanx/git/talk-php7-wordpress/php/7.0/closure-call.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://zeroconfig.github.io/Preacher/css/prism.css?e4e87ce" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="/home/johmanx/git/talk-php7-wordpress/css/bootstrap-theme.min.css?45defa8">
-    <link rel="stylesheet" href="/home/johmanx/git/talk-php7-wordpress/css/main.css?189d072">
+    <link rel="stylesheet" href="/home/johmanx/git/talk-php7-wordpress/css/main.css?3df93a2">
 </head>
 
 <body>
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                
+                <h1>Closure::call</h1>
+<p>Closure::call() is a more performant, shorthand way of temporarily binding an object scope to a closure and invoking it.</p>
+<pre><code class="language-php">&lt;?php
+class A {private $x = 1;}
+
+// Pre PHP 7 code
+$getX = function() {return $this-&gt;x;};
+$getXCB = $getX-&gt;bindTo(new A, 'A'); // intermediate closure
+echo $getXCB();
+
+// PHP 7+ code
+$getX = function() {return $this-&gt;x;};
+echo $getX-&gt;call(new A);</code></pre>
+<p>The above example will output:</p>
+<pre><code>1
+1</code></pre>
             </div>
         </div>
     </div>

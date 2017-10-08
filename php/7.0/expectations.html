@@ -3,20 +3,31 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>expectations - PHP 7 talk</title>
+    <title>Expectations - PHP 7 talk</title>
     <link rel="canonical" href="/home/johmanx/git/talk-php7-wordpress/php/7.0/expectations.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://zeroconfig.github.io/Preacher/css/prism.css?e4e87ce" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="/home/johmanx/git/talk-php7-wordpress/css/bootstrap-theme.min.css?45defa8">
-    <link rel="stylesheet" href="/home/johmanx/git/talk-php7-wordpress/css/main.css?189d072">
+    <link rel="stylesheet" href="/home/johmanx/git/talk-php7-wordpress/css/main.css?3df93a2">
 </head>
 
 <body>
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                
+                <h1>Expectations</h1>
+<p>Expectations are a backwards compatible enhancement to the older assert() function. They allow for zero-cost assertions in production code, and provide the ability to throw custom exceptions when the assertion fails.</p>
+<p>While the old API continues to be maintained for compatibility, assert() is now a language construct, allowing the first parameter to be an expression rather than just a string to be evaluated or a boolean value to be tested.</p>
+<pre><code class="language-php">&lt;?php
+ini_set('assert.exception', 1);
+
+class CustomError extends AssertionError {}
+
+assert(false, new CustomError('Some error message'));</code></pre>
+<p>The above example will output:</p>
+<pre><code>Fatal error: Uncaught CustomError: Some error message</code></pre>
+<p>Full details on this feature, including how to configure it in both development and production environments, can be found in the expectations section of the assert() reference.</p>
             </div>
         </div>
     </div>
