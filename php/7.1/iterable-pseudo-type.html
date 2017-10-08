@@ -3,20 +3,28 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>iterable-pseudo-type - PHP 7 talk</title>
+    <title>Iterable pseudo type - PHP 7 talk</title>
     <link rel="canonical" href="/home/johmanx/git/talk-php7-wordpress/php/7.1/iterable-pseudo-type.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://zeroconfig.github.io/Preacher/css/prism.css?e4e87ce" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="/home/johmanx/git/talk-php7-wordpress/css/bootstrap-theme.min.css?45defa8">
-    <link rel="stylesheet" href="/home/johmanx/git/talk-php7-wordpress/css/main.css?189d072">
+    <link rel="stylesheet" href="/home/johmanx/git/talk-php7-wordpress/css/main.css?3df93a2">
 </head>
 
 <body>
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                
+                <h1>Iterable pseudo type</h1>
+<p>A new pseudo-type (similar to callable) called iterable has been introduced. It may be used in parameter and return types, where it accepts either arrays or objects that implement the Traversable interface. With respect to subtyping, parameter types of child classes may broaden a parent's declaration of array or Traversable to iterable. With return types, child classes may narrow a parent's return type of iterable to array or an object that implements Traversable.</p>
+<pre><code class="language-php">&lt;?php
+function iterator(iterable $iter)
+{
+    foreach ($iter as $val) {
+        //
+    }
+}</code></pre>
             </div>
         </div>
     </div>

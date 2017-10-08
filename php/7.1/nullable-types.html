@@ -3,20 +3,50 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>nullable-types - PHP 7 talk</title>
+    <title>Nullable types - PHP 7 talk</title>
     <link rel="canonical" href="/home/johmanx/git/talk-php7-wordpress/php/7.1/nullable-types.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://zeroconfig.github.io/Preacher/css/prism.css?e4e87ce" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="/home/johmanx/git/talk-php7-wordpress/css/bootstrap-theme.min.css?45defa8">
-    <link rel="stylesheet" href="/home/johmanx/git/talk-php7-wordpress/css/main.css?189d072">
+    <link rel="stylesheet" href="/home/johmanx/git/talk-php7-wordpress/css/main.css?3df93a2">
 </head>
 
 <body>
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                
+                <h1>Nullable types</h1>
+<p>Type declarations for parameters and return values can now be marked as nullable by prefixing the type name with a question mark. This signifies that as well as the specified type, NULL can be passed as an argument, or returned as a value, respectively.</p>
+<pre><code class="language-php">&lt;?php
+function testReturn(): ?string
+{
+    return 'elePHPant';
+}
+
+var_dump(testReturn());
+
+function testReturn(): ?string
+{
+    return null;
+}
+
+var_dump(testReturn());
+
+function test(?string $name)
+{
+    var_dump($name);
+}
+
+test('elePHPant');
+test(null);
+test();</code></pre>
+<p>The above example will output:</p>
+<pre><code>string(10) "elePHPant"
+NULL
+string(10) "elePHPant"
+NULL
+Uncaught Error: Too few arguments to function test(), 0 passed in...</code></pre>
             </div>
         </div>
     </div>

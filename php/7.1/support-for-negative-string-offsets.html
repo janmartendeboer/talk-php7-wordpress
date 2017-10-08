@@ -3,20 +3,33 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>support-for-negative-string-offsets - PHP 7 talk</title>
+    <title>Support for negative string offsets - PHP 7 talk</title>
     <link rel="canonical" href="/home/johmanx/git/talk-php7-wordpress/php/7.1/support-for-negative-string-offsets.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://zeroconfig.github.io/Preacher/css/prism.css?e4e87ce" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="/home/johmanx/git/talk-php7-wordpress/css/bootstrap-theme.min.css?45defa8">
-    <link rel="stylesheet" href="/home/johmanx/git/talk-php7-wordpress/css/main.css?189d072">
+    <link rel="stylesheet" href="/home/johmanx/git/talk-php7-wordpress/css/main.css?3df93a2">
 </head>
 
 <body>
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                
+                <h1>Support for negative string offsets</h1>
+<p>Support for negative string offsets has been added to the string manipulation functions accepting offsets, as well as to string indexing with [] or {}. In such cases, a negative offset is interpreted as being an offset from the end of the string.</p>
+<pre><code class="language-php">&lt;?php
+var_dump("abcdef"[-2]);
+var_dump(strpos("aabbcc", "b", -3));</code></pre>
+<p>The above example will output:</p>
+<pre><code>string (1) "e"
+int(3)</code></pre>
+<p>Negative string and array offsets are now also supported in the simple variable parsing syntax inside of strings.</p>
+<pre><code class="language-php">&lt;?php
+$string = 'bar';
+echo "The last character of '$string' is '$string[-1]'.\n";</code></pre>
+<p>The above example will output:</p>
+<pre><code>The last character of 'bar' is 'r'.</code></pre>
             </div>
         </div>
     </div>
