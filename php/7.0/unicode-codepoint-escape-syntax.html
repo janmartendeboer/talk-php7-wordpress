@@ -3,20 +3,29 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>unicode-codepoint-escape-syntax - PHP 7 talk</title>
+    <title>Unicode codepoint escape syntax - PHP 7 talk</title>
     <link rel="canonical" href="/home/johmanx/git/talk-php7-wordpress/php/7.0/unicode-codepoint-escape-syntax.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://zeroconfig.github.io/Preacher/css/prism.css?e4e87ce" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="/home/johmanx/git/talk-php7-wordpress/css/bootstrap-theme.min.css?45defa8">
-    <link rel="stylesheet" href="/home/johmanx/git/talk-php7-wordpress/css/main.css?189d072">
+    <link rel="stylesheet" href="/home/johmanx/git/talk-php7-wordpress/css/main.css?3df93a2">
 </head>
 
 <body>
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                
+                <h1>Unicode codepoint escape syntax</h1>
+<p>This takes a Unicode codepoint in hexadecimal form, and outputs that codepoint in UTF-8 to a double-quoted string or a heredoc. Any valid codepoint is accepted, with leading 0's being optional.</p>
+<pre><code class="language-php">&lt;?php
+echo "\u{aa}";
+echo "\u{0000aa}";
+echo "\u{9999}";</code></pre>
+<p>The above example will output:</p>
+<pre><code>ª
+ª (same as before but with optional leading 0's)
+香</code></pre>
             </div>
         </div>
     </div>

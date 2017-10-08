@@ -11,7 +11,6 @@
 * [Group use declarations](group-use-declarations.html)
 * [Integer division with intdiv](integer-division-with-intdiv.html)
 * [IntlChar](intlchar.html)
-* [List can always unpack objects implementing ArrayAccess](list-can-always-unpack-objects-implementing-arrayaccess.html)
 * [Null coalescing operator](null-coalescing-operator.html)
 * [Preg replace callback array](preg-replace-callback-array.html)
 * [Return type declarations](return-type-declarations.html)
