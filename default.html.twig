@@ -1,4 +1,4 @@
-{% set baseUrl = '' %}
+{% set baseUrl = '/home/johmanx/git/talk-php7-wordpress/' %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -7,12 +7,13 @@
     <title>{{ headline|default(source.baseName) }} - PHP 7 talk</title>
     <link rel="canonical" href="{{ baseUrl ~ output.path }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{ baseUrl ~ asset('css/bootstrap.min.css') }}">
+    <link href="https://zeroconfig.github.io/Preacher/css/prism.css?e4e87ce" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ baseUrl ~ asset('css/bootstrap-theme.min.css') }}">
     <link rel="stylesheet" href="{{ baseUrl ~ asset('css/main.css') }}">
 </head>
 
-<body class="bg-info">
+<body>
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
@@ -20,5 +21,6 @@
             </div>
         </div>
     </div>
+    <script src="https://zeroconfig.github.io/Preacher/js/prism.js?e4e87ce" type="text/javascript"></script>
 </body>
 </html>

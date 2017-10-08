@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Scalar type declarations - PHP 7 talk</title>
+    <link rel="canonical" href="/home/johmanx/git/talk-php7-wordpress/php/7.0/scalar-type-declarations.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://zeroconfig.github.io/Preacher/css/prism.css?e4e87ce" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="/home/johmanx/git/talk-php7-wordpress/css/bootstrap-theme.min.css?45defa8">
+    <link rel="stylesheet" href="/home/johmanx/git/talk-php7-wordpress/css/main.css?189d072">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>Scalar type declarations</h1>
+<p>Scalar type declarations come in two flavours: coercive (default) and strict. The following types for parameters can now be enforced (either coercively or strictly): strings (string), integers (int), floating-point numbers (float), and booleans (bool). They augment the other types introduced in PHP 5: class names, interfaces, array and callable.</p>
+<pre><code class="language-php">&lt;?php
+// Coercive mode
+function sumOfInts(int ...$ints)
+{
+    return array_sum($ints);
+}
+
+var_dump(sumOfInts(2, '3', 4.1));</code></pre>
+<p>The above example will output:</p>
+<pre><code>int(9)</code></pre>
+<p>To enable strict mode, a single declare directive must be placed at the top of the file. This means that the strictness of typing for scalars is configured on a per-file basis. This directive not only affects the type declarations of parameters, but also a function's return type (see return type declarations, built-in PHP functions, and functions from loaded extensions.</p>
+<p>Full documentation and examples of scalar type declarations can be found in the type declaration reference.</p>
+            </div>
+        </div>
+    </div>
+    <script src="https://zeroconfig.github.io/Preacher/js/prism.js?e4e87ce" type="text/javascript"></script>
+</body>
+</html>
