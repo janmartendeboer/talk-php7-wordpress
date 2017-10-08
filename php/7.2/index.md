@@ -2,7 +2,7 @@
 
 * [Allow abstract function override](allow-abstract-function-override.html)
 * [Allow loading extensions by name](allow-loading-extensions-by-name.html)
-* [LDAP Exop](ldap-exop.html)
+* [LDAP EXOP](ldap-exop.html)
 * [Libsodium](libsodium.html)
 * [Object typehint](object-typehint.html)
 * [Parameter type widening](parameter-type-widening.html)
